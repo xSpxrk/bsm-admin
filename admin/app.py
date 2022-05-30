@@ -2,8 +2,8 @@ from typing import cast
 from flask import Flask
 from flask_admin import Admin, AdminIndexView
 
-from db.session import current_session
-from views.models import Provider, Order, Offer, Customer
+from .db.session import current_session
+from admin.views.models import Provider, Order, Offer, Customer
 
 
 def create_app() -> Flask:
@@ -16,10 +16,10 @@ def create_app() -> Flask:
                   index_view=AdminIndexView(name='Главная страница', url='/'),
                   template_mode='bootstrap4')
 
-    from views.provider import ProviderView
-    from views.offer import OfferView
-    from views.order import OrderView
-    from views.customer import CustomerView
+    from admin.views.provider import ProviderView
+    from admin.views.offer import OfferView
+    from admin.views.order import OrderView
+    from admin.views.customer import CustomerView
 
     admin.add_view(CustomerView(Customer, current_session, name="Заказчики"))
     admin.add_view(OrderView(Order, current_session, name='Заказы'))
@@ -29,6 +29,5 @@ def create_app() -> Flask:
     return cast(Flask, admin.app)
 
 
-if __name__ == "__main__":
-    app = create_app()
-    app.run(host='0.0.0.0', port=5000, debug=True)
+app = create_app()
+app.run()
