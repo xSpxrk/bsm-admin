@@ -53,3 +53,5 @@ def create_app() -> Flask:
 
 
 app = create_app()
+
+app.run()
