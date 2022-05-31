@@ -1,1 +1,1 @@
-web: waitress-serve --port=8080 --call admin.app:create_app
+web: gunicorn -w 4 -k uvicorn.workers.UvicornWorker admin.app:create_app
