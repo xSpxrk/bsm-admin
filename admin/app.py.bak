@@ -4,8 +4,8 @@ import flask
 from flask import Flask, render_template, request
 from flask_admin import Admin, AdminIndexView
 
-from .db.session import current_session
-from admin.views.models import Provider, Order, Offer, Customer
+from db.session import current_session
+from views.models import Provider, Order, Offer, Customer
 from flask_admin.form import form
 
 
@@ -39,10 +39,10 @@ def create_app() -> Flask:
                   index_view=AdminIndexView(name='Главная страница', url='/admin'),
                   template_mode='bootstrap4')
 
-    from admin.views.provider import ProviderView
-    from admin.views.offer import OfferView
-    from admin.views.order import OrderView
-    from admin.views.customer import CustomerView
+    from views.provider import ProviderView
+    from views.offer import OfferView
+    from views.order import OrderView
+    from views.customer import CustomerView
 
     admin.add_view(CustomerView(Customer, current_session, name="Заказчики"))
     admin.add_view(OrderView(Order, current_session, name='Заказы'))
@@ -53,3 +53,5 @@ def create_app() -> Flask:
 
 
 app = create_app()
+
+app.run()

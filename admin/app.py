@@ -54,4 +54,6 @@ def create_app() -> Flask:
 
 app = create_app()
 
-app.run()
+if __name__ == "__main__":
+    from waitress import serve
+    serve(app)
