@@ -1,1 +1,1 @@
-web: python admin/app.py
+web: waitress-serve --port=8080 --call admin.app:create_app
