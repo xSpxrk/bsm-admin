@@ -1,1 +1,1 @@
-web: python admin\app.py
+web: python admin/app.py

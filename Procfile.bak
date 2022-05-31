@@ -1,1 +1,1 @@
-web: gunicorn -k uvicorn.workers.UvicornWorker admin.app:app
+web: python admin\app.py
