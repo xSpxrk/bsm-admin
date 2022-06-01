@@ -11,7 +11,7 @@ from flask_admin.form import form
 
 def create_app() -> Flask:
     app = Flask(__name__)
-    app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
+    app.config['FLASK_ADMIN_SWATCH'] = 'Cosmo'
     app.secret_key = 'secret_key'
 
     @app.route('/', methods=['GET', 'POST'])
@@ -20,24 +20,12 @@ def create_app() -> Flask:
         password = request.form.get('password')
         if username == 'admin' and password == 'admin':
             return flask.redirect('/admin')
-        return '''
-        <form action="" method="post">
-        <p>
-	    <label for="username">Username</label>
-	    <input type="text" name="username">
-	</p>
-	<p>
-	    <label for="password">Password</label>
-	    <input type="password" name="password">
-	</p>
-	<p>
-	    <input type="submit">
-	</p>
-    </form>'''
+
+        return render_template('index.html')
 
     admin = Admin(app, name='Биржа строительных материалов',
                   index_view=AdminIndexView(name='Главная страница', url='/admin'),
-                  template_mode='bootstrap3')
+                  template_mode='bootstrap4')
 
     from .views.provider import ProviderView
     from .views.offer import OfferView
