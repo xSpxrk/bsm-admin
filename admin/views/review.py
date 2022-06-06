@@ -24,7 +24,7 @@ class ReviewView(ModelView):
     can_create = True
     can_delete = True
     can_view_details = True
-    column_list = ('description', 'customer_id', 'owner', 'provider', 'customer')
+    column_list = ('description', 'customer_id', 'owner', 'provider_id', 'customer_id')
 
-    column_formatters = {'owner': owner_name_formatter, 'provider': provider_name_formatter,
-                         'customer': customer_name_formatter}
+    column_formatters = {'owner': owner_name_formatter, 'provider_id': provider_name_formatter,
+                         'customer_id': customer_name_formatter}
