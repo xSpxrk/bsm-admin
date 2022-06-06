@@ -10,6 +10,7 @@ class Provider(Base):
     phone_number = Column(BigInteger)
     hashed_password = Column(String)
     offers = relationship("Offer", back_populates="provider")
+    reviews = relationship('Review', back_populates='provider')
 
     def __repr__(self):
         return self.name
