@@ -26,4 +26,5 @@ class ReviewView(ModelView):
     can_view_details = True
     column_list = ('description', 'customer_id', 'owner', 'provider', 'customer')
 
-    column_formatters = {'owner': owner_formatter}
+    column_formatters = {'owner': owner_name_formatter, 'provider': provider_name_formatter,
+                         'customer': customer_name_formatter}
