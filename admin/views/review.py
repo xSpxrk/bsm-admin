@@ -1,6 +1,7 @@
 from flask_admin.contrib.sqla import ModelView
 from .models import Review
 from markupsafe import Markup
+from typing import Any, cast
 
 
 def provider_name_formatter(view: 'ReviewView', context: Any, model: Review, name: str):
