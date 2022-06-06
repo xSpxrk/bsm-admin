@@ -1,11 +1,21 @@
 from flask_admin.contrib.sqla import ModelView
+from .models import Review
+from markupsafe import Markup
 
 
-def owner_formatter(owner):
-    if owner == 0:
-        return 'Заказчик'
+def provider_name_formatter(view: 'ReviewView', context: Any, model: Review, name: str):
+    return cast(Markup, model.provider.name)
+
+
+def customer_name_formatter(view: 'ReviewView', context: Any, model: Review, name: str):
+    return cast(Markup, model.customer.name)
+
+
+def owner_name_formatter(view: 'ReviewView', context: Any, model: Review, name: str):
+    if model.owner == 0:
+        return cast(Markup, 'Заказчик')
     else:
-        return 'Поставщик'
+        return cast(Markup, 'Поставщик')
 
 
 class ReviewView(ModelView):
@@ -16,5 +26,3 @@ class ReviewView(ModelView):
     column_list = ('description', 'customer_id', 'owner', 'provider', 'customer')
 
     column_formatters = {'owner': owner_formatter}
-
-
