@@ -5,7 +5,7 @@ from flask import Flask, render_template, request
 from flask_admin import Admin, AdminIndexView
 
 from .db.session import current_session
-from .views.models import Provider, Order, Offer, Customer
+from .views.models import Provider, Order, Offer, Customer, Review
 from flask_admin.form import form
 
 
@@ -31,11 +31,13 @@ def create_app() -> Flask:
     from .views.offer import OfferView
     from .views.order import OrderView
     from .views.customer import CustomerView
+    from .views.review import ReviewView
 
     admin.add_view(CustomerView(Customer, current_session, name="Заказчики"))
     admin.add_view(OrderView(Order, current_session, name='Заказы'))
     admin.add_view(OfferView(Offer, current_session, name="Предложения"))
     admin.add_view(ProviderView(Provider, current_session, name='Поставщики'))
+    admin.add_view(ReviewView(Review, current_session, name='Отзывы'))
 
     return cast(Flask, admin.app)
 
