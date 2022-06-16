@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, Column, String, ForeignKey, DECIMAL
+from sqlalchemy import Integer, Column, String, ForeignKey, DECIMAL, Boolean
 from sqlalchemy.orm import relationship
 from .base_class import Base
 
@@ -10,5 +10,6 @@ class Review(Base):
     customer_id = Column(Integer, ForeignKey('customers.customer_id'))
     provider_id = Column(Integer, ForeignKey('providers.provider_id'))
     owner = Column(Integer)
+    isShow = Column(Boolean)
     provider = relationship('Provider', back_populates='reviews')
     customer = relationship('Customer', back_populates='reviews')

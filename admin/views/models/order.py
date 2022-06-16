@@ -7,11 +7,12 @@ class Order(Base):
     order_id = Column(Integer, primary_key=True)
     name = Column(String)
     description = Column(String)
-    materials = Column(String)
+    material_id = Column(Integer, ForeignKey('materials.material_id'))
     quantity = Column(Integer)
     customer_id = Column(Integer, ForeignKey("customers.customer_id"))
     customer = relationship("Customer", back_populates="orders")
     offers = relationship("Offer", back_populates="order", cascade='all, delete')
+    material = relationship("Material", back_populates="order")
 
     def __repr__(self):
         return self.name

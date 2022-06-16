@@ -22,7 +22,7 @@ class OrderView(ModelView):
     can_delete = True
     can_view_details = True
 
-    column_list = ('name', 'description', 'materials', 'quantity', 'customer', 'email')
+    column_list = ('name', 'description', 'material', 'quantity', 'customer', 'email')
 
     column_formatters = {'customer': customer_name_formatter, 'email': customer_email_formatter}
 
@@ -30,4 +30,4 @@ class OrderView(ModelView):
 
 
 class OrderInlineAdmin(InlineFormAdmin):
-    form_columns = ('name', 'description', 'materials', 'quantity', 'order_id')
+    form_columns = ('name', 'description', 'material', 'quantity', 'order_id')
