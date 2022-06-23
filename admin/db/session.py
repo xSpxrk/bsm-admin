@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
-SQLALCHEMY_DATABASE_URL = "postgresql://mxqjacjonhhrii:af39c58d56c39bd7c3376ccecda1671780e9d52fedfeabd858150d1318f5a331@ec2-99-80-170-190.eu-west-1.compute.amazonaws.com:5432/de1ad77vg2jm6i"
+SQLALCHEMY_DATABASE_URL = "postgresql://ltgwufuynhpzvg:d4c0ce45c199f82c576aed9c18a56ef9731e5c0acdaf998ac529cb9d101efafa@ec2-63-34-180-86.eu-west-1.compute.amazonaws.com:5432/d1vuoa2ak3s34"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_pre_ping=True)
 
